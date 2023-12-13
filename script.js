@@ -1,12 +1,13 @@
 // script.js
 const myLibrary = [];
 
-function Book(title, author, pages, hasRead, pagesRead) {
+function Book(title, author, pages, hasRead, pagesRead, image) {
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.hasRead = hasRead;
     this.pagesRead = hasRead ? pages : (pagesRead || 0);
+    this.image = image || ''; // Set a default value or leave it empty
 }
 
 
@@ -47,6 +48,10 @@ function togglePagesReadVisibility() {
     }
 }
 
+// script.js
+
+// ... (existing code)
+
 function displayBooks() {
     const readBooksContainer = document.getElementById("read-books");
     const readingBooksContainer = document.getElementById("reading-books");
@@ -58,40 +63,48 @@ function displayBooks() {
     toReadBooksContainer.innerHTML = "";
 
     myLibrary.forEach((book, index) => {
-        const bookCard = document.createElement("div");
-        bookCard.classList.add("book-card");
+        const cardContainer = document.createElement("div");
+        cardContainer.classList.add("col-12", "col-md-6", "col-lg-4", "mb-3");
+
+        const cardContent = document.createElement("div");
+        cardContent.classList.add("card", "h-100");
 
         const readStatus = book.hasRead ? "read" : "not-read";
 
-        bookCard.innerHTML = `
-            <div class="book${index}">
-                <h2>${book.title}</h2>
-                <p class="subtitle">${book.author}</p>
-                <p>${book.pages} pages</p>
-                ${!book.hasRead ? `<p>Read: ${book.pagesRead} pages</p>` : ''}
-                <button onclick="editBook(${index})" class="edit-btn">Edit</button>
-                <button onclick="removeBook(${index})" class="remove-btn">X</button>
-            </div>
-        `;
+        console.log(book.image); // Add this line
+        cardContent.innerHTML = `
+    <div class="card-body">
+        <h5 class="card-title">${book.title}</h5>
+        <img src="${book.image}" alt="${book.title}" class="card-img-top book-image">
+        <p class="card-text">${book.author}</p>
+        <p class="card-text">${book.pages} pages</p>
+        ${!book.hasRead ? `<p class="card-text">Read: ${book.pagesRead} pages</p>` : ''}
+    </div>
+    <div class="card-footer d-flex justify-content-between">
+        <button onclick="editBook(${index})" class="btn btn-primary">Edit</button>
+        <button onclick="removeBook(${index})" class="btn btn-danger">Remove</button>
+    </div>
+`;
+
 
         // Update border color based on read status
         let borderColor;
-        if(book.hasRead)
-            borderColor = "#4CAF50"
-        else if(!book.hasRead & book.pagesRead > 0)
-            borderColor = "#e4e804"
-        else if(!book.hasRead & book.pagesRead == 0)
-            borderColor = "#f44336"
-        
-        bookCard.style.border = `2px solid ${borderColor}`;
+        if (book.hasRead) borderColor = "border-success";
+        else if (!book.hasRead && book.pagesRead > 0) borderColor = "border-warning";
+        else if (!book.hasRead && book.pagesRead === 0) borderColor = "border-danger";
 
-        // Append the book card to the appropriate category container
+        cardContent.classList.add(borderColor, `book${index}`);
+
+        // Append the card content to the card container
+        cardContainer.appendChild(cardContent);
+
+        // Append the card container to the appropriate category container
         if (book.hasRead) {
-            readBooksContainer.appendChild(bookCard);
+            readBooksContainer.appendChild(cardContainer);
         } else if (book.pagesRead > 0) {
-            readingBooksContainer.appendChild(bookCard);
+            readingBooksContainer.appendChild(cardContainer);
         } else {
-            toReadBooksContainer.appendChild(bookCard);
+            toReadBooksContainer.appendChild(cardContainer);
         }
     });
 
@@ -106,6 +119,9 @@ function displayBooks() {
         toReadBooksContainer.insertAdjacentHTML("afterbegin", "<h3>Books I Want to Read</h3>");
     }
 }
+
+// ... (remaining code)
+
 
 // Add a new function to handle the edit button click
 function editBook(index) {
@@ -181,8 +197,25 @@ document.getElementById("book-form").addEventListener("submit", (event) => {
 });
 
 // Example: Manually adding a few books to the library
-const book1 = new Book("Can't hurt me", "David Goggins", 364, true);
+const book1 = new Book("Can't Hurt Me", "David Goggins", 364, true, 0, "https://davidgoggins.com/wp-content/uploads/2022/10/cant-hurt-me-group.jpg");
 const book2 = new Book("To Kill a Mockingbird", "Harper Lee", 281, true);
+const book3 = new Book("The Great Gatsby", "F. Scott Fitzgerald", 180, false, 120);
+const book4 = new Book("1984", "George Orwell", 328, false, 200);
+const book5 = new Book("The Hobbit", "J.R.R. Tolkien", 310, true);
+const book6 = new Book("The Catcher in the Rye", "J.D. Salinger", 224, false, 150);
+const book7 = new Book("The Lord of the Rings", "J.R.R. Tolkien", 1200, false, 800);
+const book8 = new Book("Sapiens: A Brief History of Humankind", "Yuval Noah Harari", 443, true);
+const book9 = new Book("The Alchemist", "Paulo Coelho", 197, true);
+const book10 = new Book("Moby-Dick", "Herman Melville", 624, false, 400);
 
 addBookToLibrary(book1);
 addBookToLibrary(book2);
+addBookToLibrary(book3);
+addBookToLibrary(book4);
+addBookToLibrary(book5);
+addBookToLibrary(book6);
+addBookToLibrary(book7);
+addBookToLibrary(book8);
+addBookToLibrary(book9);
+addBookToLibrary(book10);
+
