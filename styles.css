@@ -5,7 +5,11 @@
 
 .header-container {
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    background-color: #4caf50; /* Green background color */
+    padding: 10px;
+    color: #fff; /* White text color */
+    border-bottom: 2px solid #2d8539; /* Darker green border */
 }
 
 .newbook-container {
@@ -19,9 +23,10 @@
 .footer-container {
     text-align: center;
     position: fixed;
-    bottom: 20px;
+    bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
+    color: #555; /* Dark gray text color */
 }
 
 #new-book-btn {

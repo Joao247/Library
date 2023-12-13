@@ -138,6 +138,9 @@ function saveEdit(index) {
     if (book.pagesRead < book.pages)
         book.hasRead = false
 
+    if (book.pagesRead == book.pages)
+        book.hasRead = true
+
     // Display the updated book details
     displayBooks();
 }
