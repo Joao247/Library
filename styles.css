@@ -6,10 +6,10 @@
 .header-container {
     text-align: center;
     margin-bottom: 20px;
-    background-color: #4caf50; /* Green background color */
+    background-color: #293429; /* Green background color */
     padding: 10px;
     color: #fff; /* White text color */
-    border-bottom: 2px solid #2d8539; /* Darker green border */
+    border-bottom: 2px solid #030303; /* Darker green border */
 }
 
 .newbook-container {
@@ -19,21 +19,17 @@
     left: 20px; /* Adjust the value as needed */
 }
 
-
-
 .footer-container {
     text-align: center;
-    color: #555; /* Dark gray text color */
-    padding: 10px;
 }
 
 #new-book-btn {
-    width: 40px;
+    width: 150px; /* Adjust the width as needed */
     height: 40px;
-    border-radius: 50%;
+    border-radius: 5px;
     background-color: #4caf50;
     color: #fff;
-    font-size: 24px;
+    font-size: 16px;
     border: none;
     cursor: pointer;
 }
@@ -44,11 +40,11 @@
 
 /* Add this to your existing styles.css file or style section */
 
+/* Existing styles */
 
 .book-card p {
     margin: 0 0 10px;
 }
-
 
 .book-card h2 {
     margin: 0;
@@ -59,14 +55,6 @@
     margin: 5px 0;
     font-style: italic;
     color: #555;
-}
-
-
-.book-category {
-    background-color: #f8f9fa;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* Adjust the styles as needed for your design preferences */
@@ -139,9 +127,6 @@ input:checked + .slider:before {
     border-radius: 50%;
 }
 
-
-
-
 /* Existing styles */
 
 .book-card {
@@ -162,6 +147,7 @@ input:checked + .slider:before {
     background-size: cover; /* Ensure the background image covers the entire container */
     background-position: center; /* Center the background image */
     background-repeat: no-repeat; /* Prevent the background image from repeating */
+    overflow: auto; /* Add overflow property */
 }
 
 /* Add this rule to style the remove button */
@@ -171,9 +157,6 @@ input:checked + .slider:before {
     color: red;
     font-size: 16px;
     cursor: pointer;
-    position: absolute;
-    top: 5px;
-    right: 5px;
     padding: 0; /* Remove padding to eliminate background */
 }
 
@@ -195,12 +178,11 @@ input:checked + .slider:before {
 /* Existing styles */
 
 .modal-content {
-    background-color: #ffffff;
-    margin: 10% auto;
+    background-color: transparent; /* Set a transparent background */
+    margin: 20% auto;
     padding: 20px;
-    border: 1px solid #888;
-    width: 60%;
-    max-width: 400px;
+    border: none; /* Remove the border */
+    width: 60%; /* Adjust the width as needed */
     text-align: center;
 }
 
@@ -227,13 +209,10 @@ input:checked + .slider:before {
     transform: translate(-50%, -50%);
     width: 60%; /* Adjust the width as needed */
     max-width: 400px; /* Add a max-width to prevent the modal from getting too wide */
-    background-color: #fefefe;
-    border: 1px solid #888;
+    background-color: transparent; /* Set modal background to transparent */
+    border: none; /* Remove the border */
     text-align: center;
-    padding: 20px;
 }
-
-
 .close {
     color: #aaa;
     float: right;
@@ -248,12 +227,79 @@ input:checked + .slider:before {
     cursor: pointer;
 }
 
-body {
-    background-color: #f8f9fa; /* Light gray background color */
+.edit-mode {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.book-image {
-    max-width: 100%;
-    max-height: 150px; /* Adjust as needed */
-    margin-bottom: 10px; /* Optional margin for spacing */
+.edit-fields {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.edit-fields label {
+    margin-bottom: 5px;
+}
+
+.edit-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.github-icon {
+    width: 20px; /* Adjust the size as needed */
+    margin-left: 5px; /* Add space between the name and icon */
+    vertical-align: middle; /* Align icon vertically with text */
+}
+
+#library-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+/* Add this CSS to style each book card */
+.card {
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 1rem; /* Adjust margins as needed */
+    width: 300px; /* Adjust the width of each book card */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column; /* Display content in a column layout */
+    height: 100%; /* Ensure the card takes the full height */
+}
+
+.mb-3 {
+    margin-bottom: 1rem;
+}
+
+.book-category {
+    border-bottom: 1px solid #ddd; /* Add a bottom border to separate categories */
+    padding-bottom: 10px; /* Add some space between category heading and books */
+    clear: both; /* Clear floats */
+    overflow-y: auto; /* Enable vertical scrolling */
+    max-height: calc(100vh - 220px); /* Adjust the max-height as needed */
+    min-height: 100%; /* Ensure a minimum height of 100% */
+}
+
+.book-category h3 {
+    margin-bottom: 10px; /* Adjust margin below the category heading */
+}
+
+.card-body {
+    flex-grow: 1; /* Allow the card body to grow within the flex container */
+}
+
+.card-footer {
+    margin-top: auto; /* Push the footer to the bottom */
+}
+
+.book-category {
+    overflow-y: auto;
+    max-height: calc(100vh - 220px);
 }
