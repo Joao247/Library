@@ -55,6 +55,17 @@ function togglePagesReadVisibility() {
     }
 }
 
+
+function toggleCategory(categoryId) {
+    const categoryContent = document.getElementById(categoryId);
+
+    if (categoryContent.style.display === 'none' || window.getComputedStyle(categoryContent).display === 'none') {
+        categoryContent.style.display = 'block';
+    } else {
+        categoryContent.style.display = 'none';
+    }
+}
+
 // Function to display books in the library
 function displayBooks() {
     // Get containers for different categories
@@ -145,8 +156,6 @@ function editBook(index) {
             <h2>${book.title}</h2>
             <p class="subtitle">${book.author}</p>
             <div class="edit-fields">
-                <label for="edit-pages">Pages:</label>
-                <input type="number" id="edit-pages" value="${book.pages}">
                 <label for="edit-pages-read">Pages Read:</label>
                 <input type="number" id="edit-pages-read" value="${book.pagesRead}">
                 <label for="edit-image">Image URL:</label>
@@ -168,7 +177,6 @@ function saveEdit(index) {
     const book = myLibrary[index];
 
     // Update the book details with the new values from input fields
-    book.pages = parseInt(document.getElementById("edit-pages").value) || 0;
     book.pagesRead = parseInt(document.getElementById("edit-pages-read").value) || 0;
     book.image = document.getElementById("edit-image").value; // Update the image URL
 
@@ -202,11 +210,11 @@ document.getElementById("book-form").addEventListener("submit", (event) => {
     const author = document.getElementById("author").value;
 
     // Check if a book with the same title and author already exists
-    const existingBook = myLibrary.find(book => book.title === title && book.author === author);
+    const existingBook = myLibrary.find(book => book.title === title);
 
     if (existingBook) {
         // Display a warning that the book already exists
-        alert("This book already exists in the library. Please choose a different title or author.");
+        alert("This book already exists in the library.");
     } else {
         const pages = document.getElementById("pages").value;
         const read = document.getElementById("read").checked;

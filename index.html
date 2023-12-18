@@ -67,22 +67,30 @@
         </div>
 
         <div class="row">
-            <div id="read-books" class="book-category col-md-4 mt-4">
-                <h3>Books that I've read:</h3>
-                <!-- Read books will be displayed here -->
+            <div class="book-category col-md-4 mt-4">
+                <button class="category-button" onclick="toggleCategory('read-books')">Books that I've read</button>
+                <div id="read-books" class="category-content">
+                    <!-- Read books will be displayed here -->
+                </div>
             </div>
 
-            <div id="reading-books" class="book-category col-md-4 mt-4">
-                <h3>Books that I'm reading:</h3>
-                <!-- Reading books will be displayed here -->
+            <div class="book-category col-md-4 mt-4">
+                <button class="category-button" onclick="toggleCategory('reading-books')">Books that I'm reading</button>
+                <div id="reading-books" class="category-content">
+                    <!-- Reading books will be displayed here -->
+                </div>
             </div>
 
-            <div id="to-read-books" class="book-category col-md-4 mt-4">
-                <h3>Books that I want to read:</h3>
-                <!-- To-read books will be displayed here -->
+            <div class="book-category col-md-4 mt-4">
+                <button class="category-button" onclick="toggleCategory('to-read-books')">Books that I want to read</button>
+                <div id="to-read-books" class="category-content">
+                    <!-- To-read books will be displayed here -->
+                </div>
             </div>
         </div>
     </div>
+
+
 
     <div class="footer-container fixed-bottom bg-light">
         <h4 class="center-text text-dark">by João Pereira</h4>
