@@ -59,15 +59,6 @@ This project is a simple Library app created using HTML, CSS, and JavaScript. Th
 - Use the "Already finished reading?" checkbox when adding a book.
 - If a book is not read, specify the number of pages read.
 
-## Firebase Integration
-
-The app is integrated with Firebase for cloud-based features. Users have the option to log in using their Google account to sync their library data across devices.
-
-## Credits
-
-- **Firebase:** Firebase SDKs used for authentication and cloud data services.
-- **Google Fonts:** Fonts used for a visually appealing experience.
-
 ## Outcome
 
 - Applied HTML5 semantic elements for improved structure.
